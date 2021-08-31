@@ -59,3 +59,28 @@ for (let index = 0; index < cars.length; index += 1) {
 }
 // Function
 
+function addCar (event) {
+    event.preventDefault()
+
+    let form = event.target
+    let vin = form.vin.value
+    let make = form.make.value
+    let modelYear = form.model.value
+    let color = form.color.value
+    let price = form.price.value
+    let numberOfDoors = form["number-of-doors"].value
+
+    let car = {
+        vin,
+        make,
+        model,
+        modelYear,
+        color,
+        price,
+        numberOfDoors,
+    }
+    console.log(car)
+}
+
+let addCarForm = document.querySelector("form#add-car")
+addCarForm.addEventListener("submit", addCar)
