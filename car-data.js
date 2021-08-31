@@ -898,5 +898,5 @@ let cars = [{
     "numberOfDoors": 3,
     "price": "$12447.70",
     "vin": "3D7JV1EP5AG855362"
-  }]
+  }];
   
