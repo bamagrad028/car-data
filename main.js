@@ -57,3 +57,5 @@ for (let index = 0; index < cars.length; index += 1) {
 
     mainElement.append(article)
 }
+// Function
+
