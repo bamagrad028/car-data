@@ -13,10 +13,9 @@
 
 console.log(cars)
 
-let mainElement = document.querySelector("main")
-for (let index = 0; index < cars.length; index += 1) {
-    let  currentCar = cars[index];
-    
+
+
+ function  createCarCard (currentCar) {
     let article = document.createElement("article")
     let header = document.createElement("header")
     let ul = document.createElement("ul")
@@ -48,39 +47,56 @@ for (let index = 0; index < cars.length; index += 1) {
 
     let vinLabel = document.createElement("strong")
     vinLabel.append("Vin:")
-    vinItem.append(vinLabel, ` ${currentCar.vinvin}`)
+    vinItem.append(vinLabel, ` ${currentCar.vin}`)
 
 
     removeButton.append("Remove")
     removeButton.classList.add("remove")
     article.append(removeButton)
 
-    mainElement.append(article)
-}
-// Function
+  return article
 
+ }
+
+ let mainElement = document.querySelector("main")
+ for (let index = 0; index < cars.length; index += 1) {
+   let currentCar = cars[index]
+   
+   let cardElement = createCarCard(currentCar)
+   mainElement.append(cardElement)
+ }
+ 
+    
 function addCar (event) {
     event.preventDefault()
-
     let form = event.target
+
     let vin = form.vin.value
     let make = form.make.value
-    let modelYear = form.model.value
+    let model = form.model.value
     let color = form.color.value
     let price = form.price.value
-    let numberOfDoors = form["number-of-doors"].value
+    let year = form.year.value
+    let doorCount = form["number-of-doors"].value
 
     let car = {
         vin,
         make,
         model,
-        modelYear,
         color,
         price,
-        numberOfDoors,
+        "modelYear": year,
+        "numberOfDoors": doorCount,
     }
-    console.log(car)
+    
+    cars.push(car)
+    let cardCardElement = createCarCard(car)
+    mainElement.prepend(cardCardElement)
+
+    form.reset()
+    
 }
 
 let addCarForm = document.querySelector("form#add-car")
 addCarForm.addEventListener("submit", addCar)
+
